@@ -1,0 +1,84 @@
+INSERT INTO Address (AddressID, AddressLine1, AddressLine2, City, StateProvinceID, PostalCode, SpatialLocation, ModifiedDate)
+VALUES ('AD4407', '123 Good St', NULL, 'LR', 'AR', '72201', '5', NULL),
+('AD4408', '345 Bad St', NULL, 'NLR', 'AR', '72116', '5', NULL),
+('AD4409', '773 River Rd', NULL, 'LR', 'AR', '72201', '5', NULL),
+('AD4410', '8333 Goober Rd', NULL, 'LR', 'AR', '72201', '5', NULL),
+('AD4411', '10 Beacon Rd', NULL, 'LR', 'AR', '72201', '5', NULL),
+('AD4412', '747 Boeing Rd', 'Suite #747', 'NLR', 'AR', '72116', '5', NULL),
+('AD4412', '9909 Turkey Ln', NULL, 'NLR', 'AR', '72116', '5', NULL),
+('AD4414', '7311 Steak St', NULL, 'LR', 'AR', '72201', '5', NULL);
+
+INSERT INTO CreditCards (CreditCardID, CardType, CardNumber, ExpMonth, ExpYear, ModifiedDate)
+VALUES ('16281', 'MC', '789696', '1/22/2022', '1/22/2022', NULL),
+('16282', 'MC', '852221', '1/22/2022', '1/22/2022', NULL),
+('16283', 'VISA', '855555', '1/22/2023', '1/22/2023', NULL),
+('16284', 'VISA', '979788', '2/22/2023', '2/22/2023', NULL),
+('16285', 'VISA', '663355', '3/3/2022', '3/3/2022', NULL),
+('16286', 'VISA', '485875', '3/4/2022', '3/4/2022', NULL),
+('16287', 'MC', '711454', '3/1/2021', '3/1/2021', NULL),
+('16288', 'VISA', '286961', '2/3/2022', '2/3/2022', NULL);
+
+INSERT INTO CurrencyRate (CurrencyRateID, CurrencyRateDate, FromCurrencyCode, ToCurrencyCode, AverageRate, EndOfDayRate, ModifiedDate)
+VALUES ('10', '10/17/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('11', '10/18/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('4', '10/1/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('5', '10/5/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('6', '10/9/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('7', '10/10/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('8', '10/11/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL),
+('9', '10/13/2019', 'Euro', 'Dollar', '1.1', '1.1', NULL);
+
+INSERT INTO Customer (CustomerID, TerritoryID, PersonID, StoreID, AccountNumber, ModifiedDate)
+VALUES ('29825', '13', '1313', '1313', '554477', NULL),
+('29826', '13', '1314', '1314', '554488', NULL),
+('29827', '14', '1315', '1315', '554400', NULL),
+('29828', '14', '1316', '1316', '554455', NULL);
+
+INSERT INTO Person (BusinessEntityID, Name, EmailPromotion, AdditionalContactInfo, Demographic, ModifiedDate)
+VALUES ('1313', 'Wallys', 'No', NULL, 'Retail', NULL),
+('1314', 'Jeffs', 'No', NULL, 'Retail', NULL),
+('1315', 'Jacks', 'No', NULL, 'Retail', NULL),
+('1316', 'Steves', 'No', NULL, 'Retail', NULL);
+
+INSERT INTO SalesOrderDetail (SalesOrderID, SalesOrderDetailID, CarrierTrackingNumber, OrderQty, ProductID, SpecialOfferID, UnitPrice, UnitPriceDiscount, LineTotal, ModifiedDate, SalesOrderNumber)
+VALUES ('4447778', '13224', '45457772', '1', '3213212', NULL, '80', NULL, '80', NULL, '1'),
+('4447779', '13225', '45457788', '1', '3213213', NULL, '50', NULL, '50', NULL, '2')
+
+INSERT INTO SalesOrderHeader (SalesOrderID, RevisionNumber, OrderDate, DueDate, ShipDate, Status, OnlineOrder, SalesOrderNumber, PurchaseOrderNumber, AccountNumber, CustomerID, SalesPersonID, TerritoryID, BillToAddressID, ShipToAddressID, ShipMethodID, CreditCardID, CreditCardApprovalCode, CurrencyRateID, SubTotal, TaxAmt, TotalDue, Comment, ModifiedDate)
+VALUES ('4447778', NULL, '10/1/19', '11/1/19', '10/4/19', 'Delivered', 'Yes', '114447778', '224447778', '10122', '29825', '55566', '13', 'AD4407', 'AD4407', 'SM22', '16281', '44552',  '8', '55', '5.5', '60.5', NULL, NULL),
+('4447779', NULL, '10/1/19', '11/1/19', '10/4/19', 'Delivered', 'Yes', '114447779', '224447779', '10123', '29826', '55567', '14', 'AD4408', 'AD4408', 'SM22', '16282', '44553',  '9', '57', '5.7', '62.7', NULL, NULL),
+('4447780', NULL, '10/3/19', '11/3/19', '10/7/19', 'Delivered', 'Yes', '114447780', '224447780', '10124', '29827', '55568', '13', 'AD4409', 'AD4409', 'SM23', '16283', '44554',  '10', '80', '8', '88', NULL, NULL),
+
+('4447781', NULL, '10/5/19', '11/5/19', '10/9/19', 'Delivered', 'Yes', '114447781', '224447781', '10125', '29828', '55569', '13', 'AD4410', 'AD4410', 'SM22', '16284', '44555',  '11', '12', '1.2', '13.2', NULL, NULL);
+
+INSERT INTO SalesOrderHeaderSalesReason (SalesOrderID, SalesReasonID, ModifiedDate)
+VALUES ('4447778', '13', NULL),
+('4447779','13', NULL),
+('4447780','15', NULL),
+('4447781','13', NULL);
+
+INSERT INTO SalesPerson (BusinessEntityID, TerritoryID, SalesQuota, Bonus, YearToDateSales, SalesLastYear, ModifiedDate)
+VALUES ('55566', '13', '145000', '14500', '155000', '135000', NULL),
+('55567', '13', '170000', '17000', '140000', '160000', NULL),
+('55568', '14', '200000', '20000', '250000', '190000', NULL),
+('55569', '14', '250000', '25000', '325000', '240000', NULL);
+
+INSERT INTO SalesProduct (ProductID, Name, ProductNumber, FlagValue, Color, ListPrice, StandardCost, Size, Weight, DaystoManufacture, ProductLine, SellStartDate, SellEndDate, ModifiedDate)
+VALUES ('3213212', 'RazorBike', 'PN3213212', NULL, 'Red', '80', '50', 'Large', '15', '2', '7', NULL, NULL, NULL),
+('3213213', 'EcoBike', 'PN3213213', NULL,  'Blue', '50', '30', 'Small', '10', '2', '7', NULL, NULL, NULL);
+
+INSERT INTO ShipMethod (ShipMethodID, Name, ShipBase, ShipRate, ModifiedDate)
+VALUES ('SM22', 'Ground', '2', '7', NULL),
+('SM23', '2Day', '5', '13', NULL);
+
+Insert INTO SpecialOffer (SpecialOfferID, Description, DiscountPct, Type, MinQty, MaxQty, Category, StartDate, EndDate, ModifiedDate)
+VALUES ('1313', 'Regional', '15', 'Single', '1', '1', 'Any', '10/1/19', '1/1/20', NULL);
+INSERT INTO Stores (BusinessEntityID, Name, Demographic, ModifiedDate)
+VALUES ('1313', 'Wallys', 'Retail', NULL),
+('1314', 'Jeffs', 'Retail', NULL),
+('1315', 'Jacks', 'Retail', NULL),
+('1316', 'Steves', 'Retail', NULL);
+
+INSERT INTO TerritorySales (TerritoryID, Name, CountryRegionCode, YearToDateSales, CostLastYear, ModifiedDate)
+VALUES ('13', 'LittleRock', 'USA', '700000', '528000', NULL),
+('14', 'NLittleRock', 'USA', '550000', '420000', NULL);

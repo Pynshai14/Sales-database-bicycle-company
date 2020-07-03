@@ -1,0 +1,184 @@
+
+
+Skip to content
+Using UA Little Rock Mail with screen readers
+sxkim@ualr.edu 
+Meet
+Start a meeting
+Join a meeting
+Chat
+
+2 of 9
+Project Submission at 1pm noon
+Inbox
+x
+A Pynshailang
+x
+
+Pynshailang Nongsiej <pxnongsiej@ualr.edu>
+Dec 2, 2019, 10:42 AM
+to Sung-kwan
+
+Hello Dr. Kim,
+
+I am at the Orthodontist. I should be at The COB today no later than 1 pm to submit the Project. 
+
+See you soon!
+
+Sincerely, 
+Pynshailang Nongsiej,
+University of Arkansas at Little Rock
+pxnongsiej@ualr.edu 
+
+
+Sung-kwan Kim <sxkim@ualr.edu>
+Dec 2, 2019, 4:56 PM
+to me
+
+Pyn,
+
+I need the SQL Scripts in the text files. Please email them to me.
+
+Dr. Kim
+--
+Sung-kwan Kim, Ph. D.
+Professor
+Business Information Systems
+College of Business
+University of Arkansas at Little Rock
+501-569-8859
+
+The College of Business serves as a catalyst to advance education and economic development in the State of Arkansas
+
+
+Pynshailang Nongsiej <pxnongsiej@ualr.edu>
+Attachments
+Dec 3, 2019, 1:52 AM
+to Sung-kwan
+
+I apologize for not checking the email on time.
+My SQL query is attached below.
+
+Sincerely, 
+Pynshailang Nongsiej,
+University of Arkansas at Little Rock
+pxnongsiej@ualr.edu 
+
+Attachments area
+
+Sung-kwan Kim <sxkim@ualr.edu>
+Dec 3, 2019, 10:25 AM
+to me
+
+Pyn,
+
+I need it in a text file.
+
+Dr. Kim
+
+
+Pynshailang Nongsiej <pxnongsiej@ualr.edu>
+Attachments
+Dec 3, 2019, 2:10 PM
+to Sung-kwan
+
+Hello Dr. Kim,
+
+The text file is attached below. 
+I apologize for the inconvenience.
+
+Sincerely, 
+
+Pynshailang Nongsiej,
+University of Arkansas at Little Rock
+pxnongsiej@ualr.edu 
+
+Attachments area
+
+Sung-kwan Kim <sxkim@ualr.edu>
+Dec 4, 2019, 10:38 AM
+to me
+
+Pyn,
+
+I need the scripts for data insertion and queries in the text files, too.
+
+Dr. Kim
+
+
+Pynshailang Nongsiej <pxnongsiej@ualr.edu>
+Attachments
+Dec 4, 2019, 1:15 PM
+to Sung-kwan
+
+Hello Dr. Kim,
+
+I misunderstood earlier. I thought you wanted just my query part.
+Here are the other queries in a text format.
+
+Sincerely,
+
+Pynshailang Nongsiej
+
+Graduate Assistant | UA- Little Rock Career Center 
+
+Phi Beta Lambda - Future Business of America l  President 
+
+646-206-0327 l pxnongsiej@ualr.edu 
+
+
+
+
+2 Attachments
+
+Compose:
+New Message
+MinimizePop-outClose
+Compose:
+New Message
+MinimizePop-outClose
+Compose:
+Student and Post-Doc Positions at FDA National Center for Toxicological Research
+MinimizePop-outClose
+﻿CREATE CLUSTERED INDEX CreditCardID ON CreditCard(CreditCardID);
+        
+CREATE CLUSTERED INDEX CurrencyRateID ON CurrencyRate(CurrencyRateID );
+
+
+CREATE CLUSTERED INDEX TerritoryID ON SalesTerritory(TerritoryID );
+
+
+CREATE CLUSTERED INDEX BusinessEntityID ON SalesPerson(BusinessEntityID );
+
+
+CREATE CLUSTERED INDEX AddressID ON Address(AddressID );
+
+
+CREATE CLUSTERED INDEX CurrencyRateID ON CurrencyRate(CurrencyRateID );
+
+
+CREATE CLUSTERED INDEX BusinessEntityID ON Store(BusinessEntityID );
+
+
+CREATE CLUSTERED INDEX BusinessEntityID ON BusinessEntity(BusinessEntityID );
+
+
+CREATE CLUSTERED INDEX CustomerID ON Customer(CustomerID );
+
+
+CREATE CLUSTERED INDEX SalesOrderIDON SalesOrderHeader(SalesOrderID );
+
+
+CREATE CLUSTERED INDEX ProductID ON Product(ProductID );
+
+
+CREATE CLUSTERED INDEX SpecialOfferID ON SpecialOffer(SpecialOfferID );
+
+
+CREATE CLUSTERED INDEX SalesOrderID ON SalesOrderDetail(SalesOrderID ),
+CREATE CLUSTERED INDEX SalesOrderDetailID ON SalesOrderDetail(SalesOrderDetailID ),
+CREATE NONCLUSTERED INDEX ProductID ON SalesOrderDetail(ProductID );
+
+
+CREATE CLUSTERED INDEX SalesOrderID ON SalesOrderHeaderSalesReason(SalesOrderID ),
+CREATE CLUSTERED INDEX SalesReasonID ON SalesOrderHeaderSalesReason(SalesReasonID );
