@@ -1,0 +1,185 @@
+CREATE TABLE CreditCards
+   (CreditCardID 	    VARCHAR(15),
+    CardType            CHAR(10),
+	CardNumber          VARCHAR(15),
+	ExpMonth			DATE,
+	ExpYear				DATE,
+	ModifiedDate		DATE,
+  CONSTRAINT PK_CreditCard_CreditCardID PRIMARY KEY (CreditCardID))
+  
+CREATE TABLE ShipMethod
+   (ShipMethodID       VARCHAR(15),
+    Name   		       CHAR(15),
+	ShipBase		   VARCHAR(15),
+	ShipRate		   DECIMAL(10,2),
+	ModifiedDate		DATE,
+  CONSTRAINT PK_ShipMethod_ShipMethodID PRIMARY KEY (ShipMethodID));
+
+  CREATE TABLE TerritorySales
+   (TerritoryID		 VARCHAR(15),
+	Name   		       CHAR(15),
+	CountryRegionCode	VARCHAR(7),
+	YearToDateSales     VARCHAR(10),
+	CostLastYear		INT,
+	ModifiedDate		DATE,
+  CONSTRAINT PK_TerritorySales_TerritoryID PRIMARY KEY (TerritoryID));
+
+
+  CREATE TABLE SalesPerson
+   (BusinessEntityID   VARCHAR(15),
+   TerritoryID		   VARCHAR(15),
+	SalesQuota   	    CHAR(15),
+	Bonus				INT,
+	YearToDateSales     VARCHAR(10),
+	SalesLastYear		INT,
+	ModifiedDate		DATE,
+  CONSTRAINT PK_SalesPerson_BusinessEntityID PRIMARY KEY (BusinessEntityID),
+  CONSTRAINT FK_SalesPerson_TerritoryID FOREIGN KEY (TerritoryID) REFERENCES TerritorySales(TerritoryID));
+
+  CREATE TABLE Address
+   (AddressID		    VARCHAR(15),
+	AddressLine1   		CHAR(15),
+	AddressLine2  		CHAR(15),
+	City	            CHAR(10),
+	StateProvinceID     CHAR(10),
+	PostalCode		    CHAR(8),
+	SpatialLocation		VARCHAR(15),
+	ModifiedDate		DATE,
+  CONSTRAINT PK_Address_AddressID PRIMARY KEY (AddressID));
+
+  CREATE TABLE CurrencyRate
+   (CurrencyRateID		VARCHAR(15),
+	CurrencyRateDate   	DATE,
+	FromCurrencyCode    VARCHAR(15),
+	ToCurrencyCode	    VARCHAR(15),
+	AverageRate	        CHAR(8),
+	EndOfDayRate		CHAR(10),
+	ModifiedDate		DATE,
+  CONSTRAINT PK_CurrencyRate_CurrencyRateID PRIMARY KEY (CurrencyRateID));
+
+  
+ CREATE TABLE Stores
+   ( BusinessEntityID       VARCHAR(15),
+   Name		 VARCHAR(20),
+   Demographic VARCHAR(20),
+   ModifiedDate		DATETIME,
+  CONSTRAINT PK_Stores_BusinessEntityID PRIMARY KEY (BusinessEntityID));
+
+
+  CREATE TABLE Person
+   ( BusinessEntityID       VARCHAR(15),
+   Name		 VARCHAR(20),
+   EmailPromotion VARCHAR(20),
+     AdditionalContactInfo VARCHAR(20),
+	   Demographic VARCHAR(20),
+   ModifiedDate		DATETIME,
+  CONSTRAINT PK_Person_BusinessEntityID PRIMARY KEY (BusinessEntityID));
+
+CREATE TABLE Customer
+   ( CustomerID       VARCHAR(15),
+   TerritoryID		 VARCHAR(15),
+    PersonID  	     VARCHAR(15),
+	StoreID		     VARCHAR(15),
+	AccountNumber	 VARCHAR (15),
+	ModifiedDate		DATE,
+  CONSTRAINT PK_Customer_CustomerID PRIMARY KEY (CustomerID),
+  CONSTRAINT FK_Customer_TerritoryID FOREIGN KEY (TerritoryID) REFERENCES TerritorySales (TerritoryID));
+
+ALTER TABLE Customer
+  ADD FOREIGN KEY (StoreID) REFERENCES Stores(BusinessEntityID);
+
+  ALTER TABLE Customer 
+  ADD FOREIGN KEY (PersonID) REFERENCES Person(BusinessEntityID);
+
+  CREATE TABLE SalesOrderHeader
+   (SalesOrderID 	          INT,
+    RevisionNumber            INT,
+    OrderDate                 DATETIME,
+    DueDate	        		  DATETIME,
+    ShipDate	              DATETIME,
+    Status	                  CHAR(15),
+    OnlineOrder	              CHAR(15),
+    SalesOrderNumber	      INT,
+    PurchaseOrderNumber	      INT,
+    AccountNumber	          INT,
+	CustomerID				  VARCHAR (15),
+	SalesPersonID			  VARCHAR (15),
+	TerritoryID				  VARCHAR (15),
+	BillToAddressID			  VARCHAR (15),	
+	ShipToAddressID           VARCHAR (15),
+	ShipMethodID              VARCHAR (15),
+	CreditCardID              VARCHAR (15),
+	CreditCardApprovalCode    VARCHAR (15),
+	CurrencyRateID            VARCHAR (15),
+	SubTotal    			  VARCHAR (15),
+	TaxAmt					  DECIMAL (10,2),
+	TotalDue   				  DECIMAL (10,2),
+	Comment					  VARCHAR (100),
+	ModifiedDate			  DATETIME,
+	
+   CONSTRAINT PK_SalesOrderHeader_SalesOrderID PRIMARY KEY (SalesOrderID),
+   CONSTRAINT FK_SalesOrderHeader_CreditCardID FOREIGN KEY (CreditCardID) REFERENCES CreditCards(CreditCardID),
+   CONSTRAINT FK_SalesOrderHeader_ShipMethodID FOREIGN KEY (ShipMethodID) REFERENCES ShipMethod(ShipMethodID),
+   CONSTRAINT FK_SalesOrderHeader_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+   CONSTRAINT FK_SalesOrderHeader_TerritoryID FOREIGN KEY (TerritoryID) REFERENCES TerritorySales(TerritoryID),
+   CONSTRAINT FK_SalesOrderHeader_SalesPersonID FOREIGN KEY (SalesPersonID) REFERENCES SalesPerson(BusinessEntityID),
+   CONSTRAINT FK_SalesOrderHeader_BillToAddressID FOREIGN KEY (BillToAddressID) REFERENCES Address(AddressID),
+   CONSTRAINT FK_SalesOrderHeader_ShipToAdddressID FOREIGN KEY (ShipToAddressID) REFERENCES Address(AddressID),
+   CONSTRAINT FK_SalesOrderHeader_CurrencyRateID FOREIGN KEY (CurrencyRateID) REFERENCES CurrencyRate(CurrencyRateID));
+
+    CREATE TABLE SalesProduct
+   (ProductID			 INT,
+    Name   				 CHAR(25),
+	ProductNumber		 VARCHAR(15),
+	FlagValue		     INT,
+	Color		         VARCHAR(15),
+	ListPrice			 DECIMAL(10,2),
+	StandardCost		 DECIMAL(10,2),
+	Size				 CHAR(10),
+	Weight				 DECIMAL(7,2),
+	DaysToManufacture	 INT,
+	ProductLine			 CHAR(15),
+	SellStartDate		 DATETIME,
+	SellEndDate			 DATETIME,
+	ModifiedDate		 DATETIME,
+
+  CONSTRAINT PK_SalesProduct_ShipMethodID PRIMARY KEY (ProductID));
+
+  CREATE TABLE SpecialOffer
+   (SpecialOfferID			 INT,
+    Description   			VARCHAR(50),
+	DiscountPct		 DECIMAL(10,2),
+	Type		         CHAR(10),
+	MinQty			 INT,
+	MaxQty			 INT,
+	Category		 VARCHAR(20),
+	StartDate		 DATETIME,
+	EndDate			 DATETIME,
+	ModifiedDate	 DATETIME,
+
+  CONSTRAINT PK_SpecialOffer_SpecialOfferID PRIMARY KEY (SpecialOfferID));
+   
+      CREATE TABLE SalesOrderDetail
+   (SalesOrderID			INT,
+    SalesOrderDetailID		INT,
+	CarrierTrackingNumber	INT,
+	OrderQty			  INT,
+	ProductID   	    INT,
+	SpecialOfferID      INT,
+	UnitPrice	        DECIMAL(10,2),
+	UnitPriceDiscount	DECIMAL(10,2),
+	LineTotal		    DECIMAL(10,2),
+	ModifiedDate		DATETIME,
+	SalesOrderNumber int,
+  CONSTRAINT PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID PRIMARY KEY (SalesOrderID,SalesOrderDetailID),
+  CONSTRAINT FK_SalesOrderDetail_SpecialOfferID FOREIGN KEY (SpecialOfferID) REFERENCES SpecialOffer(SpecialOfferID),
+  CONSTRAINT FK_SalesOrderDetail_ProductID FOREIGN KEY (ProductID) REFERENCES SalesProduct(ProductID),
+  CONSTRAINT FK_SalesOrderDetail_SalesOrderID FOREIGN KEY (SalesOrderID) REFERENCES SalesOrderHeader(SalesOrderID));
+
+  CREATE TABLE SalesOrderHeaderSalesReason
+   (SalesOrderID			INT,
+    SalesReasonID		INT,
+	ModifiedDate		DATETIME,
+  CONSTRAINT PK_SalesOrderHeaderSalesReason_SalesOrderID_SalesReasonID PRIMARY KEY (SalesOrderID, SalesReasonID),
+  CONSTRAINT FK_SalesOrderHeaderSalesReason_SalesOrderID FOREIGN KEY (SalesOrderID) REFERENCES SalesOrderHeader(SalesOrderID));
+
